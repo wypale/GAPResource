@@ -1,0 +1,29 @@
+﻿@using GAPResource.Data;
+@using GAPResource.Models
+@model DetailsViewModel
+@{
+    ViewData["Title"] = "Details Order Info Page";
+}
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Детали маршрута для машины @Html.DisplayFor(model => model.TruckName)</legend>
+        <table class="table">
+            <tr><td>OrderId</td><td>CityTo</td><td>Weight</td></tr>
+            @foreach (var p in Model.Items)
+            {
+                <tr>
+                    <td>@p.OrderId</td>
+                    <td>@p.CityTo</td>
+                    <td>@p.Weight</td>
+                </tr>
+            }
+        </table>
+        <p>@Html.ActionLink("Назад", controllerName:"Info", actionName: "Index", routeValues: new {idOrder=Model.OrderId}, htmlAttributes: new { @class = "btn btn-primary", @role="button" })</p>
+    </fieldset>
+}
+
+
+

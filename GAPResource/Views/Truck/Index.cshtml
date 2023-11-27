@@ -1,0 +1,37 @@
+﻿@using GAPResource.Data;
+@using GAPResource.Models
+@model List<TruckDTO>
+@{
+    ViewData["Title"] = "City Page";
+}
+
+
+<style>
+td{padding:5px;}
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+</style>
+
+<div class="text-center">
+    <h5>Список машин</h5>
+    <div>
+        <table class="table">
+            <tr><td>Id</td><td>Name</td><td>LoadCapacity</td></tr>
+            @foreach (TruckDTO p in Model)
+            {
+                <tr><td>@p.Id</td><td>@p.Name</td><td>@p.LoadCapacity</td></tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <div>
+        <input type="button" value="Назад" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,40 @@
+﻿@model SendOrderViewModel
+@using GAPResource.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+<div class="text-center">
+    @if (ViewBag.Message != null)
+    {
+        <legend>@ViewBag.Message</legend>
+    }
+    <h5>Добро пожаловать</h5>
+    <div>
+        <table class="table">
+            <tr>
+                <td> <input type="button" value="Создать новый заказ" onclick="location.href='@Url.Action("Index", "NewOrder")'" /></td>
+            </tr>
+            <tr>
+                <td> <input type="button" value="Список городов" onclick="location.href='@Url.Action("Index", "City")'" /></td>
+            </tr>
+            <tr>
+                <td> <input type="button" value="Список заказов" onclick="location.href='@Url.Action("Index", "Order")'" /></td>
+            </tr>
+            <tr>
+                <td> <input type="button" value="Список машин" onclick="location.href='@Url.Action("Index", "Truck")'" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить все заказы из города" />
+                    @Html.DropDownListFor(model => model.SenderCityId, ViewBag.SenderCity as SelectList)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+}
+
+

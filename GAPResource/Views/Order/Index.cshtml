@@ -1,0 +1,63 @@
+﻿@using GAPResource.Data;
+@using GAPResource.Models
+@model List<OrderViewModel>
+@{
+    ViewData["Title"] = "Order Page";
+}
+
+
+<style>
+td{padding:5px;}
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+</style>
+
+<div class="text-center">
+    @if (ViewBag.Message != null)
+    {
+        <legend>@ViewBag.Message</legend>
+    }
+    <h5>Список заказов</h5>
+    <div>
+        <table class="table">
+            <tr><td>Id</td><td>CityFrom</td><td>CityTo</td><td>Finished</td></tr>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.CityFrom</td>
+                    <td>@p.CityTo</td>
+                    <td>@p.Finished</td>
+                    <!--td>
+                        <input type="button" value="Подробности" onclick="location.href='@Url.Action("DeleteOrder")?idOrder=@p.Id'" />
+
+                    </td-->
+                    <!--td>
+                    @if (p.Finished)
+                    {
+                        <td> @Html.ActionLink("Подробности", actionName: "Info", routeValues: new {idOrder=@p.Id}, htmlAttributes: new { @class = "btn btn-primary", @role="button",disabled = @p.Finished ? "" : "disabled" } )</td>
+                    }
+                    else
+                    {
+                        <td>Action is not available</td>
+                    }
+                    </td-->
+
+                    <td> @Html.ActionLink("Подробности", actionName: "Info", routeValues: new {idOrder=@p.Id}, htmlAttributes: new { @class = "btn btn-primary " + (@p.Finished ? "" : "disabled"), @role="button"} )</td>
+                    
+                    <td> @Html.ActionLink("Удалить", actionName: "DeleteOrder",  routeValues: new {idOrder=@p.Id}, htmlAttributes: new { @class = "btn btn-primary", @role="button" })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <div>
+        <input type="button" value="Назад" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </div>
+</div>
+
+
+

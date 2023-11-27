@@ -1,0 +1,45 @@
+﻿@using GAPResource.Data;
+@using GAPResource.Models
+@model OrderFullViewModel
+@{
+    ViewData["Title"] = "Order Info Page";
+}
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Заказ</legend>
+        <p>
+            Город отправления:
+            @Html.DisplayFor(model => model.CityFrom)
+        </p>
+        <p>
+            Город прибытия:
+            @Html.DisplayFor(model => model.CityTo)
+        </p>
+
+        <p>
+            Адрес прибытия: 
+            @Html.DisplayFor(model => model.RecipientAddress)
+        </p>
+
+        <p>
+            Масса груза: 
+            @Html.DisplayFor(model => model.Weight)
+        </p>
+        <p>
+            Дата отправления:
+            @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @type = "date"  } })
+        </p>
+        <p>
+            Стоимость заказа:
+            @Html.DisplayFor(model => model.Amount)
+        </p>
+        <p>@Html.ActionLink("Детали маршрута", actionName: "Details", routeValues: new { idOrder = Model.Id }, htmlAttributes: new { @class = "btn btn-primary", @role="button" })</p>
+        <p>@Html.ActionLink("Назад", controllerName:"Order", actionName: "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-primary", @role="button" })</p>
+    </fieldset>
+}
+
+
+

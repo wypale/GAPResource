@@ -1,0 +1,35 @@
+﻿@using GAPResource.Models
+@model IndexSenderViewModel
+@{
+    ViewData["Title"] = "City Page";
+}
+
+
+<style>
+td{padding:5px;}
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+</style>
+
+<div class="text-center">
+    <h5>Список городов</h5>
+    <div>
+        <table class="table">
+            <tr><td>Id</td><td>Name</td></tr>
+            @foreach (CityViewModel p in Model.SenderCity)
+            {
+                <tr><td>@p.Id</td><td>@p.Name</td></tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <div>
+        <input type="button" value="Назад" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </div>
+</div>
+
+
+
